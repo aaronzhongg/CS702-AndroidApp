@@ -1,13 +1,92 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.aaron.cashme.IncomeFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/title_income" />
+    <Button
+        android:id="@+id/increment"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:text="+"
+        android:layout_alignBottom="@+id/value"
+        android:layout_alignRight="@+id/dollarValue"
+        android:layout_alignEnd="@+id/dollarValue" />
 
-</FrameLayout>
+    <TextView
+        android:id="@+id/income"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/title_income"
+        android:textSize="30sp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="11dp" />
+
+    <TextView
+        android:id="@+id/yourIncome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Enter Income"
+        android:textSize="25sp"
+        android:layout_marginTop="214dp"
+        android:layout_below="@+id/income"
+        android:layout_alignRight="@+id/newAmount"
+        android:layout_alignEnd="@+id/newAmount" />
+
+    <EditText
+        android:id="@+id/dollarValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="11dp"
+        android:ems="10"
+        android:hint="$"
+        android:inputType="numberDecimal"
+        android:layout_below="@+id/yourIncome"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:id="@+id/decrement"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:text="-"
+        android:layout_alignBottom="@+id/value"
+        android:layout_alignLeft="@+id/dollarValue"
+        android:layout_alignStart="@+id/dollarValue" />
+
+    <TextView
+        android:id="@+id/value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="93dp"
+        android:text="0"
+        android:textSize="30sp"
+        android:layout_above="@+id/dollarValue"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:id="@+id/newAmount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="29dp"
+        android:text="Update Amount"
+        android:layout_below="@+id/dollarValue"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="$"
+        android:textSize="30sp"
+        android:layout_alignBaseline="@+id/value"
+        android:layout_alignBottom="@+id/value"
+        android:layout_toLeftOf="@+id/value"
+        android:layout_toStartOf="@+id/value" />
+
+
+
+</RelativeLayout>
