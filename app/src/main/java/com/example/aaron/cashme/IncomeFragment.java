@@ -76,6 +76,7 @@ public class IncomeFragment extends Fragment {
                 String entered = enteredAmount.getText().toString();
 
                 amount.setText(String.valueOf(entered));
+                enteredAmount.setText(String.valueOf(0));
             }
         });
 
