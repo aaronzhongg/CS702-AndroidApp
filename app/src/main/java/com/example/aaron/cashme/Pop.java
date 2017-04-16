@@ -17,26 +17,46 @@ import android.widget.RelativeLayout;
 
 public class Pop extends Activity {
 
+    Button closeBtn;
+    Button saveBtn;
+
     public Pop() {
         // Required empty public constructor
     }
-
-
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.popwindow);
-        final PopupWindow popUpWindow = new PopupWindow(this);
+        closeBtn = (Button) findViewById(R.id.cancelButton);
+        saveBtn = (Button) findViewById(R.id.saveButton);
 
-        DisplayMetrics dm = new DisplayMetrics();
-        getWindowManager().getDefaultDisplay().getMetrics(dm);
+        closeBtn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                // Perform action on click
+                finish();
+            }
+        });
 
-        int width = dm.widthPixels;
-        int height = dm.heightPixels;
+        saveBtn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                // Perform action on click
+                finish();
 
-        getWindow().setLayout((int)(width*0.8),(int)(height*0.7));
+                //TODO: Store data. Add new income to income file
+            }
+        });
+
+//        final PopupWindow popUpWindow = new PopupWindow(this);
+//
+//        DisplayMetrics dm = new DisplayMetrics();
+//        getWindowManager().getDefaultDisplay().getMetrics(dm);
+//
+//        int width = dm.widthPixels;
+//        int height = dm.heightPixels;
+//
+//        getWindow().setLayout((int)(width*0.8),(int)(height*0.7));
 
 
 //        final Button close = (Button)findViewById((R.id.saveButton));
