@@ -17,7 +17,7 @@
         android:textSize="24sp" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/incomeName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -29,12 +29,12 @@
 
 
     <EditText
-        android:id="@+id/editText3"
+        android:id="@+id/amount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/editText"
-        android:layout_alignStart="@+id/editText"
-        android:layout_below="@+id/editText"
+        android:layout_alignLeft="@+id/incomeName"
+        android:layout_alignStart="@+id/incomeName"
+        android:layout_below="@+id/incomeName"
         android:layout_marginTop="30dp"
         android:ems="10"
         android:hint="Amount ($)"
@@ -44,14 +44,14 @@
     <RadioGroup
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/radioGroup2"
+        android:id="@+id/radioGroup"
         android:layout_marginTop="30dp"
-        android:layout_below="@+id/editText3"
+        android:layout_below="@+id/amount"
         android:layout_centerHorizontal="true">
 
 
         <RadioButton
-            android:id="@+id/radioButton"
+            android:id="@+id/perWeekRadioBtn"
             style="@style/Widget.AppCompat.CompoundButton.RadioButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -63,18 +63,18 @@
 
 
         <RadioButton
-            android:id="@+id/radioButton4"
+            android:id="@+id/perMonthRadioBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Per Month" />
 
         <RadioButton
-            android:id="@+id/radioButton3"
+            android:id="@+id/perYearRadioBtn"
             android:layout_width="137dp"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/radioGroup2"
-            android:layout_alignStart="@+id/radioGroup2"
-            android:layout_below="@+id/radioGroup2"
+            android:layout_alignLeft="@+id/radioGroup"
+            android:layout_alignStart="@+id/radioGroup"
+            android:layout_below="@+id/radioGroup"
             android:layout_marginTop="25dp"
             android:text="Per Year" />
     </RadioGroup>

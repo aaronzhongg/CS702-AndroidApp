@@ -20,7 +20,6 @@ import android.widget.TextView;
  */
 public class IncomeFragment extends Fragment {
 
-
     public IncomeFragment() {
         // Required empty public constructor
     }
@@ -32,17 +31,12 @@ public class IncomeFragment extends Fragment {
         // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.fragment_income, container, false);
 
-
         final Button optionWindow;
-
-
         final TextView amount;
         final EditText enteredAmount;
 
 
         amount = (TextView)root.findViewById(R.id.value);
-
-
 
         optionWindow = (Button) root.findViewById((R.id.plusButton));
         optionWindow.setTag(1);
