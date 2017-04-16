@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
 import android.widget.TextView;
 
 
@@ -15,6 +16,7 @@ import android.widget.TextView;
 public class OverviewFragment extends Fragment {
 
     TextView netIncomeTextView;
+    ListView overviewListView;
 
     public OverviewFragment() {
         // Required empty public constructor
@@ -28,6 +30,7 @@ public class OverviewFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_overview, container, false);
 
         netIncomeTextView = (TextView) root.findViewById(R.id.netIncomeTextView);
+        overviewListView = (ListView) root.findViewById(R.id.overviewListView);
 
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_overview, container, false);
