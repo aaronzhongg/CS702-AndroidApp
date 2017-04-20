@@ -20,6 +20,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -50,7 +51,11 @@ public class IncomeFragment extends Fragment {
         amount = (TextView)root.findViewById(R.id.value);
         listView = (ListView) root.findViewById(R.id.listView);
 
-        adapter = new ListAdapter(getActivity(), new String[] { "data1", "data2"});
+        List<IncomeExpenses> tempList = mydb.getAllIncome();
+//        String[] incomeArray = new String[tempList.size()];
+//        incomeArray = tempList.toArray(incomeArray);
+
+        adapter = new ListAdapter(getActivity(), tempList);
         listView.setAdapter(adapter);
 
         optionWindow = (Button) root.findViewById((R.id.plusButton));

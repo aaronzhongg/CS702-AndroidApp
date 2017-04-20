@@ -17,7 +17,7 @@ import java.util.ArrayList;
 public class DBHelper extends SQLiteOpenHelper {
     public static final String DATABASE_NAME = "CashMe.db";
     public static final String INCOME_TABLE_NAME = "income";
-    public static final String INCOME_COLUMN_ID = "incomeId";
+    public static final String INCOME_COLUMN_ID = "id";
     public static final String INCOME_COLUMN_NAME = "incomeName";
     public static final String INCOME_COLUMN_AMOUNT = "amount";
     public static final String INCOME_COLUMN_PERIOD = "period";
@@ -52,15 +52,20 @@ public class DBHelper extends SQLiteOpenHelper {
         return true;
     }
 
-    public ArrayList<String> getAllIncome() {
-        ArrayList<String> incomeList = new ArrayList<String>();
+    public ArrayList<IncomeExpenses> getAllIncome() {
+        ArrayList<IncomeExpenses> incomeList = new ArrayList<IncomeExpenses>();
         SQLiteDatabase db = this.getReadableDatabase();
 
         Cursor query =  db.rawQuery( "select * from income", null );
         query.moveToFirst();
+//        IncomeExpenses temp = new IncomeExpenses();
 
         while(query.isAfterLast() == false){
-            incomeList.add(query.getString(query.getColumnIndex(INCOME_COLUMN_NAME)));
+            int id = Integer.parseInt(query.getString(query.getColumnIndex(INCOME_COLUMN_ID)));
+            String incomeName = query.getString(query.getColumnIndex(INCOME_COLUMN_NAME));
+            double amount = Double.parseDouble(query.getString(query.getColumnIndex(INCOME_COLUMN_AMOUNT)));
+            int period = Integer.parseInt(query.getString(query.getColumnIndex(INCOME_COLUMN_PERIOD)));
+            incomeList.add(new IncomeExpenses(id, incomeName, amount, period));
             query.moveToNext();
         }
         return incomeList;

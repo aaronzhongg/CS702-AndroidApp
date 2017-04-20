@@ -7,16 +7,18 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import java.util.List;
+
 /**
  * Created by Aaron on 17/04/17.
  */
 
 public class ListAdapter extends BaseAdapter {
     Context context;
-    String[] data;
+    List<IncomeExpenses> data;
     private static LayoutInflater inflater = null;
 
-    public ListAdapter(Context context, String[] data) {
+    public ListAdapter(Context context, List<IncomeExpenses> data) {
         // TODO Auto-generated constructor stub
         this.context = context;
         this.data = data;
@@ -27,13 +29,13 @@ public class ListAdapter extends BaseAdapter {
     @Override
     public int getCount() {
         // TODO Auto-generated method stub
-        return data.length;
+        return data.size();
     }
 
     @Override
     public Object getItem(int position) {
         // TODO Auto-generated method stub
-        return data[position];
+        return data.get(position);
     }
 
     @Override
@@ -50,8 +52,13 @@ public class ListAdapter extends BaseAdapter {
             vi = inflater.inflate(R.layout.list_item, null);
         }
 
-        TextView text = (TextView) vi.findViewById(R.id.incomeAmount);
-        text.setText(data[position]);
+        TextView incomeAmount = (TextView) vi.findViewById(R.id.incomeAmount);
+        TextView incomeName = (TextView) vi.findViewById(R.id.label);
+        IncomeExpenses i = (IncomeExpenses) getItem(position);
+
+        incomeAmount.setText(Double.toString(i.amount));
+        incomeName.setText(i.incomeName);
+
         return vi;
     }
 }
