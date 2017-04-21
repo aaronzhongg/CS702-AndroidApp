@@ -89,7 +89,7 @@ public class IncomeFragment extends Fragment {
 
                         //Notify your ListView adapter
                         adapter.notifyDataSetChanged();
-
+                        updateListView();
                     }
                 });
                 alertDialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -123,7 +123,8 @@ public class IncomeFragment extends Fragment {
     public void onResume(){
         super.onResume();
 
-        adapter.data = mydb.getAllIncome();
+        tempList = mydb.getAllIncome();
+        adapter.data = tempList;
         adapter.notifyDataSetChanged();
         updateListView();
     }
