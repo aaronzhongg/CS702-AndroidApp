@@ -97,4 +97,15 @@ public class DBHelper extends SQLiteOpenHelper {
         DecimalFormat twoDForm = new DecimalFormat("#.##");
         return Double.valueOf(twoDForm.format(totalMonthlyIncome));
     }
+
+    public void deleteIncome(int id) {
+        //Open the database
+        SQLiteDatabase database = this.getWritableDatabase();
+
+        //Execute sql query to remove from database
+        database.execSQL("DELETE FROM " + INCOME_TABLE_NAME + " WHERE " + INCOME_COLUMN_ID + "= " + id);
+
+        //Close the database
+        database.close();
+    }
 }
