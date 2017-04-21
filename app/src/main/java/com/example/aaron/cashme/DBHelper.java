@@ -7,7 +7,9 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Aaron on 16/04/17.
@@ -70,5 +72,29 @@ public class DBHelper extends SQLiteOpenHelper {
         }
 
         return incomeList;
+    }
+
+    public double calculateTotalMonthlyIncome() {
+        List<IncomeExpenses> ie = getAllIncome();
+        double totalMonthlyIncome = 0.0;
+
+        for (IncomeExpenses i: ie ) {
+            switch (i.period) {
+                case 0:
+                    totalMonthlyIncome += (i.amount * 4);
+                    break;
+                case 1:
+                    totalMonthlyIncome += i.amount;
+                    break;
+                case 2:
+                    totalMonthlyIncome += (i.amount / 12);
+                    break;
+                default:
+                    break;
+
+            }
+        }
+        DecimalFormat twoDForm = new DecimalFormat("#.##");
+        return Double.valueOf(twoDForm.format(totalMonthlyIncome));
     }
 }

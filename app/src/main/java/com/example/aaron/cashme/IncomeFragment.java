@@ -31,6 +31,7 @@ public class IncomeFragment extends Fragment {
     ListView listView;
     ListAdapter adapter;
     DBHelper mydb;
+    TextView amount;
 
     public IncomeFragment() {
         // Required empty public constructor
@@ -45,7 +46,6 @@ public class IncomeFragment extends Fragment {
         mydb = new DBHelper(getActivity());
 
         final Button optionWindow;
-        final TextView amount;
         final EditText enteredAmount;
 
         amount = (TextView)root.findViewById(R.id.value);
@@ -59,7 +59,7 @@ public class IncomeFragment extends Fragment {
         listView.setAdapter(adapter);
 
         optionWindow = (Button) root.findViewById((R.id.plusButton));
-
+        updateListView();
 
         optionWindow.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -81,6 +81,11 @@ public class IncomeFragment extends Fragment {
 
         adapter.data = mydb.getAllIncome();
         adapter.notifyDataSetChanged();
+        updateListView();
+    }
+
+    public void updateListView() {
+        amount.setText("$" + mydb.calculateTotalMonthlyIncome());
     }
 
 }
