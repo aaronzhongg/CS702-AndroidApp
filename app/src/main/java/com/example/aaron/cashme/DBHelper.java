@@ -68,6 +68,7 @@ public class DBHelper extends SQLiteOpenHelper {
             incomeList.add(new IncomeExpenses(id, incomeName, amount, period));
             query.moveToNext();
         }
+
         return incomeList;
     }
 }

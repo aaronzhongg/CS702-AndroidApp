@@ -59,32 +59,28 @@ public class IncomeFragment extends Fragment {
         listView.setAdapter(adapter);
 
         optionWindow = (Button) root.findViewById((R.id.plusButton));
-        optionWindow.setTag(1);
+
 
         optionWindow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(IncomeFragment.this.getActivity(), Pop.class));
+                Intent i = new Intent(IncomeFragment.this.getActivity(), Pop.class);
 
-//          final int status =(Integer) v.getTag();
-//                if(status == 1) {
-//                    optionWindow.setText("-");
-//                    v.setTag(0); //pause
-//                } else {
-//                    optionWindow.setText("+");
-//                    v.setTag(1); //pause
-//                }
+                startActivity(i);
+
+
             }
         });
-
-
-
-
-
 
     return root;
     }
 
+    @Override
+    public void onResume(){
+        super.onResume();
 
+        adapter.data = mydb.getAllIncome();
+        adapter.notifyDataSetChanged();
+    }
 
 }

@@ -62,8 +62,13 @@ public class Pop extends Activity {
                     else if (checkedRadioButtonId == R.id.perMonthRadioBtn) {
                         mydb.insertIncome(incomeName.getText().toString(), Double.parseDouble(amount.getText().toString()), 1);
                     }
+                    else if (checkedRadioButtonId == R.id.perYearRadioBtn) {
+                        mydb.insertIncome(incomeName.getText().toString(), Double.parseDouble(amount.getText().toString()), 2);
+                    }
 
                     finish();
+
+
                 }
 
 
