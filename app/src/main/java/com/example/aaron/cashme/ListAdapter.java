@@ -7,6 +7,8 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
 import java.util.List;
 
 /**
@@ -54,10 +56,25 @@ public class ListAdapter extends BaseAdapter {
 
         TextView incomeAmount = (TextView) vi.findViewById(R.id.incomeAmount);
         TextView incomeName = (TextView) vi.findViewById(R.id.label);
+        TextView term = (TextView) vi.findViewById(R.id.term);
         IncomeExpenses i = (IncomeExpenses) getItem(position);
 
-        incomeAmount.setText(Double.toString(i.amount));
+        incomeAmount.setText("$" + Double.toString(i.amount));
         incomeName.setText(i.incomeName);
+
+        switch (i.period) {
+            case 0:
+                term.setText("Per Week");
+                break;
+            case 1:
+                term.setText("Per Month");
+                break;
+            case 2:
+                term.setText("Per Year");
+                break;
+            default:
+                break;
+        }
 
         return vi;
     }
