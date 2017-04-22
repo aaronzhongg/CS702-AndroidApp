@@ -23,6 +23,11 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String INCOME_COLUMN_NAME = "incomeName";
     public static final String INCOME_COLUMN_AMOUNT = "amount";
     public static final String INCOME_COLUMN_PERIOD = "period";
+    public static final String EXPENSE_TABLE_NAME = "expense";
+    public static final String EXPENSE_COLUMN_ID = "id";
+    public static final String EXPENSE_COLUMN_NAME = "expenseName";
+    public static final String EXPENSE_COLUMN_AMOUNT = "amount";
+    public static final String EXPENSE_COLUMN_PERIOD = "period";
 
     public DBHelper(Context context) {
         super(context, DATABASE_NAME , null, 1);
@@ -34,6 +39,11 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL(
                 "create table income " +
                         "(id integer primary key, incomeName text, amount real, period integer)"
+        );
+
+        db.execSQL(
+                "create table expense " +
+                        "(id integer primary key, expenseName text, amount real, period integer)"
         );
     }
 
@@ -104,6 +114,70 @@ public class DBHelper extends SQLiteOpenHelper {
 
         //Execute sql query to remove from database
         database.execSQL("DELETE FROM " + INCOME_TABLE_NAME + " WHERE " + INCOME_COLUMN_ID + "= " + id);
+
+        //Close the database
+        database.close();
+    }
+
+    public boolean insertExpense (String expenseName, double amount, int period) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("expenseName", expenseName);
+        contentValues.put("amount", amount);
+        contentValues.put("period", period);
+        db.insert("expense", null, contentValues);
+        return true;
+    }
+
+    public ArrayList<IncomeExpenses> getAllExpenses() {
+        ArrayList<IncomeExpenses> expenseList = new ArrayList<IncomeExpenses>();
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor query =  db.rawQuery( "select * from expense", null );
+        query.moveToFirst();
+
+        while(query.isAfterLast() == false){
+            int id = Integer.parseInt(query.getString(query.getColumnIndex(EXPENSE_COLUMN_ID)));
+            String expenseName = query.getString(query.getColumnIndex(EXPENSE_COLUMN_NAME));
+            double amount = Double.parseDouble(query.getString(query.getColumnIndex(EXPENSE_COLUMN_AMOUNT)));
+            int period = Integer.parseInt(query.getString(query.getColumnIndex(EXPENSE_COLUMN_PERIOD)));
+            expenseList.add(new IncomeExpenses(id, expenseName, amount, period));
+            query.moveToNext();
+        }
+
+        return expenseList;
+    }
+
+    public double calculateTotalMonthlyExpenses() {
+        List<IncomeExpenses> ie = getAllExpenses();
+        double totalMonthlyExpense = 0.0;
+
+        for (IncomeExpenses i: ie ) {
+            switch (i.period) {
+                case 0:
+                    totalMonthlyExpense += (i.amount * 4);
+                    break;
+                case 1:
+                    totalMonthlyExpense += i.amount;
+                    break;
+                case 2:
+                    totalMonthlyExpense += (i.amount / 12);
+                    break;
+                default:
+                    break;
+
+            }
+        }
+        DecimalFormat twoDForm = new DecimalFormat("#.##");
+        return Double.valueOf(twoDForm.format(totalMonthlyExpense));
+    }
+
+    public void deleteExpense(int id) {
+        //Open the database
+        SQLiteDatabase database = this.getWritableDatabase();
+
+        //Execute sql query to remove from database
+        database.execSQL("DELETE FROM " + EXPENSE_TABLE_NAME + " WHERE " + EXPENSE_COLUMN_ID + "= " + id);
 
         //Close the database
         database.close();

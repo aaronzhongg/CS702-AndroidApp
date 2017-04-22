@@ -2,12 +2,64 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.aaron.cashme.ExpensesFragment">
+    tools:context="com.example.aaron.cashme.IncomeFragment"
+    >
 
     <!-- TODO: Update blank fragment layout -->
 
+    <TextView
+        android:id="@+id/expenses"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="11dp"
+        android:gravity="center"
+        android:text="@string/title_expenses"
+        android:textSize="30sp" />
+
+    <TextView
+        android:id="@+id/elbl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Monthly Expenses"
+        android:textSize="25sp"
+        android:layout_above="@+id/expensesListView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="46dp" />
 
 
+
+    <TextView
+        android:id="@+id/expensesValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:textSize="30sp"
+        android:layout_marginTop="42dp"
+        android:layout_below="@+id/expensesPlusButton"
+        android:layout_centerHorizontal="true" />
+
+
+    <Button
+        android:id="@+id/expensesPlusButton"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginEnd="13dp"
+        android:layout_marginRight="13dp"
+        android:text="+" />
+
+    <ListView
+        android:id="@+id/expensesListView"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
 
 </RelativeLayout>
