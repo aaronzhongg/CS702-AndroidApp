@@ -17,6 +17,7 @@ public class OverviewFragment extends Fragment {
 
     TextView netIncomeTextView;
     ListView overviewListView;
+    DBHelper mydb;
 
     public OverviewFragment() {
         // Required empty public constructor
@@ -28,15 +29,13 @@ public class OverviewFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         View root = inflater.inflate(R.layout.fragment_overview, container, false);
+        mydb = new DBHelper(getActivity());
 
         netIncomeTextView = (TextView) root.findViewById(R.id.netIncomeTextView);
-        overviewListView = (ListView) root.findViewById(R.id.overviewListView);
+
+        netIncomeTextView.setText("$" + mydb.calculateNetIncome());
 
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_overview, container, false);
-    }
-
-    public void UpdateNetIncomeViewText(String newValue) {
-        netIncomeTextView.setText("$" + newValue);
+        return root;
     }
 }
