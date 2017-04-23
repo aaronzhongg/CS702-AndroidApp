@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#eaecef">
+
+    <TextView
+        android:id="@+id/addExpensesTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:text="Add New Expense"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:id="@+id/expensesName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="78dp"
+        android:ems="10"
+        android:hint="Expense Type"
+        android:inputType="textPersonName" />
+
+
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/expensesRadioGroup"
+        android:layout_below="@+id/expenseAmount"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp">
+
+
+        <RadioButton
+            android:id="@+id/expensesPerWeekRadioBtn"
+            style="@style/Widget.AppCompat.CompoundButton.RadioButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/radioButton2"
+            android:layout_alignLeft="@+id/radioButton2"
+            android:layout_alignStart="@+id/radioButton2"
+            android:layout_marginBottom="25dp"
+            android:text="Per Week" />
+
+
+        <RadioButton
+            android:id="@+id/expensesPerMonthRadioBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Per Month" />
+
+        <RadioButton
+            android:id="@+id/expensesPerYearRadioBtn"
+            android:layout_width="137dp"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/radioGroup"
+            android:layout_alignStart="@+id/radioGroup"
+            android:layout_below="@+id/radioGroup"
+            android:layout_marginTop="25dp"
+            android:text="Per Year" />
+    </RadioGroup>
+
+
+    <Button
+        android:id="@+id/expensesSaveButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="28dp"
+        android:layout_marginEnd="46dp"
+        android:layout_marginRight="46dp"
+        android:text="Save Changes"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <Button
+        android:id="@+id/expensesCancelButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cancel"
+        android:layout_alignBaseline="@+id/expensesSaveButton"
+        android:layout_alignBottom="@+id/expensesSaveButton"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="61dp"
+        android:layout_marginStart="61dp" />
+
+    <EditText
+        android:id="@+id/expenseAmount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="27dp"
+        android:layout_weight="1"
+        android:ems="10"
+        android:hint="Amount ($)"
+        android:inputType="numberDecimal"
+        android:layout_below="@+id/expensesName"
+        android:layout_alignLeft="@+id/expensesName"
+        android:layout_alignStart="@+id/expensesName" />
+
+
+</RelativeLayout>

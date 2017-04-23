@@ -23,6 +23,11 @@
             android:theme="@style/AppTheme.CustomeTheme">
         </activity>
 
+        <activity android:name=".ExpensesPopUp"
+            android:theme="@style/AppTheme.CustomeTheme">
+        </activity>
+
+
     </application>
 
 </manifest>
