@@ -18,6 +18,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".Pop"
+            android:theme="@style/AppTheme.CustomeTheme">
+        </activity>
+
+        <activity android:name=".ExpensesPopUp"
+            android:theme="@style/AppTheme.CustomeTheme">
+        </activity>
+
+
     </application>
 
 </manifest>
