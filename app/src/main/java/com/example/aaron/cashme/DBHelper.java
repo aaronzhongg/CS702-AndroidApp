@@ -182,4 +182,11 @@ public class DBHelper extends SQLiteOpenHelper {
         //Close the database
         database.close();
     }
+
+    public double calculateNetIncome() {
+        double income = calculateTotalMonthlyIncome();
+        double expenses = calculateTotalMonthlyExpenses();
+        double netIncome = income - expenses;
+        return netIncome;
+    }
 }
