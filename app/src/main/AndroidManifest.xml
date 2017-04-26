@@ -27,6 +27,7 @@
             android:theme="@style/AppTheme.CustomeTheme">
         </activity>
 
+        <service android:name=".LocalService" />
 
     </application>
 
