@@ -9,13 +9,15 @@ import android.widget.EditText;
 import android.widget.RadioGroup;
 
 /**
+ * This is a popup to add new expenses
+ *
  * Created by Aaron on 21/04/17.
  */
 
 public class ExpensesPopUp extends Activity {
 
+    //declare variables
     DBHelper mydb;
-
     Button closeBtn;
     Button saveBtn;
     RadioGroup radioGroup;

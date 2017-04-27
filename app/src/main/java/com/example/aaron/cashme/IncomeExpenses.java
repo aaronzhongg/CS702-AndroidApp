@@ -1,6 +1,8 @@
 package com.example.aaron.cashme;
 
 /**
+ * This is a basic data structure for income and expense information
+ *
  * Created by Aaron on 20/04/17.
  */
 

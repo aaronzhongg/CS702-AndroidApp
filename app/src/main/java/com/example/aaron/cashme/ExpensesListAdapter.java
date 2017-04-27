@@ -10,6 +10,8 @@ import android.widget.TextView;
 import java.util.List;
 
 /**
+ * This is a list adapter to manage the expense list
+ *
  * Created by Aaron on 22/04/17.
  */
 

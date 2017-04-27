@@ -19,10 +19,12 @@ import java.util.List;
 
 
 /**
+ * This fragment manages adding, removing and updating view items related to expenses
  * A simple {@link Fragment} subclass.
  */
 public class ExpensesFragment extends Fragment {
 
+    //Declared Variables
     ListView listView;
     ExpensesListAdapter adapter;
     DBHelper mydb;
@@ -53,6 +55,7 @@ public class ExpensesFragment extends Fragment {
         listView.setAdapter(adapter);
         updateListView();
 
+        // Dialog to delete expense items from list - click to delete
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
@@ -94,6 +97,7 @@ public class ExpensesFragment extends Fragment {
         optionWindow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // Open popup window to add new expense
                 Intent i = new Intent(ExpensesFragment.this.getActivity(), ExpensesPopUp.class);
 
                 startActivity(i);
@@ -105,6 +109,7 @@ public class ExpensesFragment extends Fragment {
         return root;
     }
 
+    // Updates the window with new entered data from the user, fetches from the database
     @Override
     public void onResume(){
         super.onResume();

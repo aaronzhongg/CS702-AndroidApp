@@ -12,24 +12,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+/**
+ * The MainActivity manages the logic to switch between fragments in the navigation view
+ */
 public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
 
-//    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
-//            = new BottomNavigationView.OnNavigationItemSelectedListener() {
-//
-//        @Override
-//        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-//
-//        }
-//
-//    };
 
     private Fragment fragment;
     private FragmentManager fragmentManager;
-
-
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +34,8 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         transaction.replace(R.id.main_content, new OverviewFragment()).commit();
 
     }
+
+    //Opens up different fragments to change contents on display window
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {

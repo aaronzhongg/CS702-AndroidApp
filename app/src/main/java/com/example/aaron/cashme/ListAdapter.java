@@ -12,6 +12,8 @@ import org.w3c.dom.Text;
 import java.util.List;
 
 /**
+ * This is a list adapter to manage the income list
+ *
  * Created by Aaron on 17/04/17.
  */
 

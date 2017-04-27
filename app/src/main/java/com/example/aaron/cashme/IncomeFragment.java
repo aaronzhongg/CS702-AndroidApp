@@ -31,10 +31,13 @@ import java.util.List;
 
 
 /**
+ * This fragment manages adding, removing and updating view items related to income
+ *
  * A simple {@link Fragment} subclass.
  */
 public class IncomeFragment extends Fragment {
 
+    //Declared variables
     ListView listView;
     ListAdapter adapter;
     DBHelper mydb;
@@ -51,6 +54,8 @@ public class IncomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.fragment_income, container, false);
+
+        //Gets database data
         mydb = new DBHelper(getActivity());
 
         final Button optionWindow;
@@ -60,13 +65,13 @@ public class IncomeFragment extends Fragment {
         listView = (ListView) root.findViewById(R.id.listView);
 
         tempList = mydb.getAllIncome();
-//        String[] incomeArray = new String[tempList.size()];
-//        incomeArray = tempList.toArray(incomeArray);
+
 
         adapter = new ListAdapter(getActivity(), tempList);
         listView.setAdapter(adapter);
         updateListView();
 
+        // Dialog to delete icome items from list - click to delete
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
@@ -108,6 +113,7 @@ public class IncomeFragment extends Fragment {
         optionWindow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // Open popup window to add new expense
                 Intent i = new Intent(IncomeFragment.this.getActivity(), Pop.class);
 
                 startActivity(i);
@@ -119,6 +125,7 @@ public class IncomeFragment extends Fragment {
     return root;
     }
 
+    // Updates the window with new entered data from the user, fetches from the database
     @Override
     public void onResume(){
         super.onResume();
@@ -129,6 +136,7 @@ public class IncomeFragment extends Fragment {
         updateListView();
     }
 
+    //Updates total text and performs a monthly conversion calculation
     public void updateListView() {
         amount.setText("$" + mydb.calculateTotalMonthlyIncome());
     }

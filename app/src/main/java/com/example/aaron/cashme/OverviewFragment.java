@@ -21,7 +21,7 @@ public class OverviewFragment extends Fragment {
 
     TextView netIncomeTextView;
     LocalService mService;
-//    Button goButton;
+
 
     public OverviewFragment() {
         // Required empty public constructor
@@ -43,6 +43,7 @@ public class OverviewFragment extends Fragment {
         return root;
     }
 
+    // stops service running
     @Override
     public void onDestroy() {
         super.onDestroy();

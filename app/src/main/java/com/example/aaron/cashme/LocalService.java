@@ -6,6 +6,7 @@ import android.os.Binder;
 import android.os.IBinder;
 
 /**
+ * This service is used to calculate net income by calling the db
  * Created by Aaron on 26/04/17.
  */
 
