@@ -86,23 +86,20 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="28dp"
         android:layout_marginEnd="46dp"
-        android:layout_marginRight="46dp"
         android:text="Save Changes"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_toRightOf="@+id/cancelButton" />
 
     <Button
         android:id="@+id/cancelButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Cancel"
-        android:layout_marginRight="57dp"
         android:layout_marginEnd="57dp"
         android:layout_alignBaseline="@+id/saveButton"
         android:layout_alignBottom="@+id/saveButton"
-        android:layout_toLeftOf="@+id/saveButton"
-        android:layout_toStartOf="@+id/saveButton" />
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="52dp" />
 
 
 </RelativeLayout>
