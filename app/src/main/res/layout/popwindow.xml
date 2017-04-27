@@ -95,24 +95,29 @@
 
     <Button
         android:id="@+id/saveButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="125dp"
+        android:layout_height="50dp"
         android:layout_marginBottom="28dp"
-        android:layout_marginEnd="46dp"
+        android:layout_marginRight="46dp"
         android:text="Save Changes"
         android:layout_alignParentBottom="true"
-        android:layout_toRightOf="@+id/cancelButton" />
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:background="#0d1011"
+        android:textColor="@color/lightTextColour"/>
 
     <Button
         android:id="@+id/cancelButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="125dp"
+        android:layout_height="50dp"
         android:text="Cancel"
         android:layout_marginEnd="57dp"
         android:layout_alignBaseline="@+id/saveButton"
         android:layout_alignBottom="@+id/saveButton"
         android:layout_alignParentLeft="true"
-        android:layout_marginLeft="52dp" />
+        android:layout_marginLeft="52dp"
+        android:background="#0d1011"
+        android:textColor="@color/lightTextColour"/>
 
 
 </RelativeLayout>

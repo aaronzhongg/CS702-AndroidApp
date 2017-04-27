@@ -50,7 +50,11 @@
         android:text="+"
         android:layout_alignBottom="@+id/expenses"
         android:layout_alignParentRight="true"
-        android:layout_marginRight="17dp" />
+        android:layout_marginRight="17dp"
+        android:background="#0d1011"
+        android:textColor="@color/lightTextColour"
+        android:textStyle="bold"
+        android:textSize="30dp"/>
 
     <ListView
         android:id="@+id/expensesListView"
