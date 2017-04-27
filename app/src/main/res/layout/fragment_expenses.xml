@@ -2,10 +2,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.aaron.cashme.IncomeFragment"
+    tools:context="com.example.aaron.cashme.Fragments.ExpensesFragment"
     >
-
-    <!-- TODO: Update blank fragment layout -->
 
     <TextView
         android:id="@+id/expenses"
@@ -26,16 +24,16 @@
         android:textSize="25sp"
         android:layout_above="@+id/expensesListView"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="11dp" />
+        android:layout_marginBottom="30dp" />
 
 
     <TextView
         android:id="@+id/expensesValue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/expenses"
+        android:layout_above="@+id/elbl"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="47dp"
+        android:layout_marginBottom="30dp"
         android:text="0"
         android:textSize="50sp" />
 
