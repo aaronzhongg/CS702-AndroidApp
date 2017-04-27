@@ -22,6 +22,11 @@ android {
             minifyEnabled false
         }
     }
+    sourceSets {
+        main {
+            java.srcDirs = ['src/main/java', 'src/main/java/src', 'src/main/java/com.example.aaron.cashme/Fragments']
+        }
+    }
 }
 
 dependencies {
