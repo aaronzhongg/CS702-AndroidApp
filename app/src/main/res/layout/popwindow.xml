@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#eaecef">
+    android:background="@drawable/gradient">
 
     <TextView
         android:id="@+id/addIncomeTitle"
@@ -11,10 +11,12 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="26dp"
+        android:layout_marginTop="100dp"
         android:text="Add New Income"
         android:textAlignment="center"
-        android:textSize="24sp" />
+        android:textSize="24sp"
+        android:textColor="@color/lightTextColour"
+        android:textStyle="bold"/>
 
     <EditText
         android:id="@+id/incomeName"
@@ -22,10 +24,11 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="78dp"
+        android:layout_marginTop="200dp"
         android:ems="10"
         android:hint="Income Type"
-        android:inputType="textPersonName" />
+        android:inputType="textPersonName"
+        android:textColor="@color/lightTextColour"/>
 
 
     <EditText
@@ -38,11 +41,12 @@
         android:layout_marginTop="30dp"
         android:ems="10"
         android:hint="Amount ($)"
-        android:inputType="numberDecimal" />
+        android:inputType="numberDecimal"
+        />
 
 
     <RadioGroup
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:id="@+id/radioGroup"
         android:layout_marginTop="30dp"
@@ -59,14 +63,20 @@
             android:layout_alignLeft="@+id/radioButton2"
             android:layout_alignStart="@+id/radioButton2"
             android:layout_marginBottom="25dp"
-            android:text="Per Week" />
+            android:text="  Per Week"
+            android:textColor="@color/lightTextColour"
+            android:textStyle="bold"
+            android:textSize="20dp"/>
 
 
         <RadioButton
             android:id="@+id/perMonthRadioBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Per Month" />
+            android:text="  Per Month"
+            android:textColor="@color/lightTextColour"
+            android:textStyle="bold"
+            android:textSize="20dp"/>
 
         <RadioButton
             android:id="@+id/perYearRadioBtn"
@@ -76,7 +86,10 @@
             android:layout_alignStart="@+id/radioGroup"
             android:layout_below="@+id/radioGroup"
             android:layout_marginTop="25dp"
-            android:text="Per Year" />
+            android:text="  Per Year"
+            android:textColor="@color/lightTextColour"
+            android:textStyle="bold"
+            android:textSize="20dp"/>
     </RadioGroup>
 
 

@@ -1,7 +1,9 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" tools:context="com.example.aaron.cashme.Fragments.OverviewFragment">
+    android:layout_height="match_parent"
+    tools:context="com.example.aaron.cashme.Fragments.OverviewFragment"
+    android:background="@drawable/gradient">
 
 
 
@@ -16,7 +18,8 @@
         android:textSize="50sp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="220dp" />
+        android:layout_marginTop="220dp"
+        android:textColor="@color/lightTextColour"/>
 
     <TextView
         android:id="@+id/netIncomeLabel"
@@ -27,7 +30,8 @@
         android:textSize="25sp"
         android:layout_marginTop="15dp"
         android:layout_below="@+id/netIncomeTextView"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/lightTextColour"/>
 
 
 </RelativeLayout>

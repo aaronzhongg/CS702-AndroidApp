@@ -2,33 +2,35 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:weightSum="1">
+    android:weightSum="1"
+    android:background="@color/colorSecondary">
 
     <TextView xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/label"
-        android:layout_width="150dp"
+        android:layout_width="140dp"
         android:layout_height="40dp"
         android:text="Type"
         android:textSize="20dp"
         android:textStyle="bold"
-        android:layout_alignParentTop="true"
-        android:layout_toLeftOf="@+id/incomeAmount"
-        android:layout_toStartOf="@+id/incomeAmount"
         android:textColor="@color/lightTextColour"
-        android:gravity="center_vertical"></TextView>
+        android:gravity="center_vertical"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="17dp"></TextView>
 
     <TextView
         android:id="@+id/incomeAmount"
         android:layout_width="75dp"
         android:layout_height="40dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
         android:text="Amount"
         android:textAlignment="textStart"
         android:textStyle="bold"
         android:textSize="20dp"
         android:textColor="@color/lightTextColour"
-        android:gravity="center_vertical"></TextView>
+        android:gravity="center_vertical"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/label"
+        android:layout_toLeftOf="@+id/term"></TextView>
 
     <TextView
         android:id="@+id/term"
@@ -41,6 +43,7 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:textColor="@color/lightTextColour"
-        android:gravity="center_vertical"/>
+        android:gravity="center_vertical"
+        android:textStyle="bold"/>
 
 </RelativeLayout>
