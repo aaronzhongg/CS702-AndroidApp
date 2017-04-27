@@ -49,8 +49,8 @@
         android:text="+"
         android:layout_alignBottom="@+id/income"
         android:layout_alignParentRight="true"
-        android:layout_marginRight="17dp"
-        android:background="#0d1011"
+        android:layout_marginRight="25dp"
+        android:background="@drawable/rounded_button"
         android:textColor="@color/lightTextColour"
         android:textStyle="bold"
         android:textSize="30dp"/>
