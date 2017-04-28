@@ -1,12 +1,9 @@
 package com.example.aaron.cashme.Fragments;
 
 
-import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
-import android.content.ServiceConnection;
 import android.os.Bundle;
-import android.os.IBinder;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +12,7 @@ import android.widget.TextView;
 
 import com.example.aaron.cashme.Services.LocalService;
 import com.example.aaron.cashme.R;
+import com.example.aaron.cashme.Services.OverviewFragmentServiceConnection;
 
 
 /**
@@ -23,8 +21,8 @@ import com.example.aaron.cashme.R;
 public class OverviewFragment extends Fragment {
 
     TextView netIncomeTextView;
-    LocalService mService;
-
+    private OverviewFragmentServiceConnection mConnection = new OverviewFragmentServiceConnection(this);
+//    LocalService mService;
 
     public OverviewFragment() {
         // Required empty public constructor
@@ -55,20 +53,14 @@ public class OverviewFragment extends Fragment {
         getActivity().unbindService(mConnection);
     }
 
-    private ServiceConnection mConnection = new ServiceConnection() {
-        public void onServiceConnected(ComponentName className, IBinder service) {
-            mService = ((LocalService.LocalBinder) service).getService();
-            netIncomeTextView.setText("$" + mService.calcNetIncome());
-        }
 
-        public void onServiceDisconnected(ComponentName className) {
-            mService = null;
-        }
-    };
 
     void bindService() {
         getActivity().bindService(new Intent(getActivity(),
                 LocalService.class), mConnection, Context.BIND_AUTO_CREATE);
     }
 
+    public void refreshView() {
+        netIncomeTextView.setText("$" + mConnection.mService.calcNetIncome());
+    }
 }
