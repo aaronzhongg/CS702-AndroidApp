@@ -1,48 +1,44 @@
-package com.example.aaron.cashme;
+package com.example.aaron.cashme.Fragments;
 
 
-import android.app.ActivityManager;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.view.ContextMenu;
-import android.view.Gravity;
 import android.view.LayoutInflater;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Adapter;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.PopupWindow;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import java.util.ArrayList;
+import com.example.aaron.cashme.Common.DBHelper;
+import com.example.aaron.cashme.Common.ExpensesListAdapter;
+import com.example.aaron.cashme.Activities.ExpensesPopUp;
+import com.example.aaron.cashme.Models.IncomeExpenses;
+import com.example.aaron.cashme.R;
+
 import java.util.List;
 
 
 /**
+ * This fragment manages adding, removing and updating view items related to expenses
  * A simple {@link Fragment} subclass.
  */
-public class IncomeFragment extends Fragment {
+public class ExpensesFragment extends Fragment {
 
+    //Declared Variables
     ListView listView;
-    ListAdapter adapter;
+    ExpensesListAdapter adapter;
     DBHelper mydb;
     TextView amount;
     List<IncomeExpenses> tempList;
 
-    public IncomeFragment() {
+    public ExpensesFragment() {
         // Required empty public constructor
+
     }
 
 
@@ -50,23 +46,21 @@ public class IncomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View root = inflater.inflate(R.layout.fragment_income, container, false);
+        View root = inflater.inflate(R.layout.fragment_expenses, container, false);
         mydb = new DBHelper(getActivity());
 
         final Button optionWindow;
-        final EditText enteredAmount;
 
-        amount = (TextView)root.findViewById(R.id.value);
-        listView = (ListView) root.findViewById(R.id.listView);
+        amount = (TextView)root.findViewById(R.id.expensesValue);
+        listView = (ListView) root.findViewById(R.id.expensesListView);
 
-        tempList = mydb.getAllIncome();
-//        String[] incomeArray = new String[tempList.size()];
-//        incomeArray = tempList.toArray(incomeArray);
+        tempList = mydb.getAllExpenses();
 
-        adapter = new ListAdapter(getActivity(), tempList);
+        adapter = new ExpensesListAdapter(getActivity(), tempList);
         listView.setAdapter(adapter);
         updateListView();
 
+        // Dialog to delete expense items from list - click to delete
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
@@ -81,10 +75,10 @@ public class IncomeFragment extends Fragment {
 
                         id = tempList.get(position).id;
 
-                        mydb.deleteIncome(id);
+                        mydb.deleteExpense(id);
 
                         //Update your ArrayList
-                        tempList = mydb.getAllIncome();
+                        tempList = mydb.getAllExpenses();
                         adapter.data = tempList;
 
                         //Notify your ListView adapter
@@ -103,12 +97,13 @@ public class IncomeFragment extends Fragment {
 
         });
 
-        optionWindow = (Button) root.findViewById((R.id.plusButton));
+        optionWindow = (Button) root.findViewById((R.id.expensesPlusButton));
 
         optionWindow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(IncomeFragment.this.getActivity(), Pop.class);
+                // Open popup window to add new expense
+                Intent i = new Intent(ExpensesFragment.this.getActivity(), ExpensesPopUp.class);
 
                 startActivity(i);
 
@@ -116,21 +111,22 @@ public class IncomeFragment extends Fragment {
             }
         });
 
-    return root;
+        return root;
     }
 
+    // Updates the window with new entered data from the user, fetches from the database
     @Override
     public void onResume(){
         super.onResume();
 
-        tempList = mydb.getAllIncome();
+        tempList = mydb.getAllExpenses();
         adapter.data = tempList;
         adapter.notifyDataSetChanged();
         updateListView();
     }
 
     public void updateListView() {
-        amount.setText("$" + mydb.calculateTotalMonthlyIncome());
+        amount.setText("$" + mydb.calculateTotalMonthlyExpenses());
     }
 
 }

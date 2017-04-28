@@ -1,4 +1,4 @@
-package com.example.aaron.cashme;
+package com.example.aaron.cashme.Fragments;
 
 
 import android.app.AlertDialog;
@@ -15,23 +15,31 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.example.aaron.cashme.Common.DBHelper;
+import com.example.aaron.cashme.Models.IncomeExpenses;
+import com.example.aaron.cashme.Common.ListAdapter;
+import com.example.aaron.cashme.Activities.Pop;
+import com.example.aaron.cashme.R;
+
 import java.util.List;
 
 
 /**
+ * This fragment manages adding, removing and updating view items related to income
+ *
  * A simple {@link Fragment} subclass.
  */
-public class ExpensesFragment extends Fragment {
+public class IncomeFragment extends Fragment {
 
+    //Declared variables
     ListView listView;
-    ExpensesListAdapter adapter;
+    ListAdapter adapter;
     DBHelper mydb;
     TextView amount;
     List<IncomeExpenses> tempList;
 
-    public ExpensesFragment() {
+    public IncomeFragment() {
         // Required empty public constructor
-
     }
 
 
@@ -39,20 +47,25 @@ public class ExpensesFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View root = inflater.inflate(R.layout.fragment_expenses, container, false);
+        View root = inflater.inflate(R.layout.fragment_income, container, false);
+
+        //Gets database data
         mydb = new DBHelper(getActivity());
 
         final Button optionWindow;
+        final EditText enteredAmount;
 
-        amount = (TextView)root.findViewById(R.id.expensesValue);
-        listView = (ListView) root.findViewById(R.id.expensesListView);
+        amount = (TextView)root.findViewById(R.id.value);
+        listView = (ListView) root.findViewById(R.id.listView);
 
-        tempList = mydb.getAllExpenses();
+        tempList = mydb.getAllIncome();
 
-        adapter = new ExpensesListAdapter(getActivity(), tempList);
+
+        adapter = new ListAdapter(getActivity(), tempList);
         listView.setAdapter(adapter);
         updateListView();
 
+        // Dialog to delete icome items from list - click to delete
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
@@ -67,10 +80,10 @@ public class ExpensesFragment extends Fragment {
 
                         id = tempList.get(position).id;
 
-                        mydb.deleteExpense(id);
+                        mydb.deleteIncome(id);
 
                         //Update your ArrayList
-                        tempList = mydb.getAllExpenses();
+                        tempList = mydb.getAllIncome();
                         adapter.data = tempList;
 
                         //Notify your ListView adapter
@@ -89,12 +102,13 @@ public class ExpensesFragment extends Fragment {
 
         });
 
-        optionWindow = (Button) root.findViewById((R.id.expensesPlusButton));
+        optionWindow = (Button) root.findViewById((R.id.plusButton));
 
         optionWindow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(ExpensesFragment.this.getActivity(), ExpensesPopUp.class);
+                // Open popup window to add new expense
+                Intent i = new Intent(IncomeFragment.this.getActivity(), Pop.class);
 
                 startActivity(i);
 
@@ -102,21 +116,23 @@ public class ExpensesFragment extends Fragment {
             }
         });
 
-        return root;
+    return root;
     }
 
+    // Updates the window with new entered data from the user, fetches from the database
     @Override
     public void onResume(){
         super.onResume();
 
-        tempList = mydb.getAllExpenses();
+        tempList = mydb.getAllIncome();
         adapter.data = tempList;
         adapter.notifyDataSetChanged();
         updateListView();
     }
 
+    //Updates total text and performs a monthly conversion calculation
     public void updateListView() {
-        amount.setText("$" + mydb.calculateTotalMonthlyExpenses());
+        amount.setText("$" + mydb.calculateTotalMonthlyIncome());
     }
 
 }

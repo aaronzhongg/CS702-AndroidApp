@@ -1,11 +1,12 @@
-package com.example.aaron.cashme;
+package com.example.aaron.cashme.Common;
 
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
+
+import com.example.aaron.cashme.Models.IncomeExpenses;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -14,6 +15,8 @@ import java.util.List;
 /**
  * Created by Aaron on 16/04/17.
  * https://www.tutorialspoint.com/android/android_sqlite_database.htm
+ *
+ * This DBHelper manages all db queries to the income and expense tables
  */
 
 public class DBHelper extends SQLiteOpenHelper {
@@ -54,6 +57,7 @@ public class DBHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
+    // Add new income into db
     public boolean insertIncome (String incomeName, double amount, int period) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
@@ -64,13 +68,13 @@ public class DBHelper extends SQLiteOpenHelper {
         return true;
     }
 
+    // Get all income data in db
     public ArrayList<IncomeExpenses> getAllIncome() {
         ArrayList<IncomeExpenses> incomeList = new ArrayList<IncomeExpenses>();
         SQLiteDatabase db = this.getReadableDatabase();
 
         Cursor query =  db.rawQuery( "select * from income", null );
         query.moveToFirst();
-//        IncomeExpenses temp = new IncomeExpenses();
 
         while(query.isAfterLast() == false){
             int id = Integer.parseInt(query.getString(query.getColumnIndex(INCOME_COLUMN_ID)));
@@ -84,6 +88,7 @@ public class DBHelper extends SQLiteOpenHelper {
         return incomeList;
     }
 
+    // Gets all expense data and calculate total monthly income
     public double calculateTotalMonthlyIncome() {
         List<IncomeExpenses> ie = getAllIncome();
         double totalMonthlyIncome = 0.0;
@@ -108,6 +113,7 @@ public class DBHelper extends SQLiteOpenHelper {
         return Double.valueOf(twoDForm.format(totalMonthlyIncome));
     }
 
+    // Delete income entry in db
     public void deleteIncome(int id) {
         //Open the database
         SQLiteDatabase database = this.getWritableDatabase();
@@ -119,6 +125,7 @@ public class DBHelper extends SQLiteOpenHelper {
         database.close();
     }
 
+    // Add new expense into db
     public boolean insertExpense (String expenseName, double amount, int period) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
@@ -129,6 +136,7 @@ public class DBHelper extends SQLiteOpenHelper {
         return true;
     }
 
+    // Gets all expense data in db
     public ArrayList<IncomeExpenses> getAllExpenses() {
         ArrayList<IncomeExpenses> expenseList = new ArrayList<IncomeExpenses>();
         SQLiteDatabase db = this.getReadableDatabase();
@@ -148,6 +156,7 @@ public class DBHelper extends SQLiteOpenHelper {
         return expenseList;
     }
 
+    // Gets all expense data and calculate total monthly expenses
     public double calculateTotalMonthlyExpenses() {
         List<IncomeExpenses> ie = getAllExpenses();
         double totalMonthlyExpense = 0.0;
@@ -183,6 +192,7 @@ public class DBHelper extends SQLiteOpenHelper {
         database.close();
     }
 
+    // Total monthly income - total monthly expense
     public double calculateNetIncome() {
         double income = calculateTotalMonthlyIncome();
         double expenses = calculateTotalMonthlyExpenses();

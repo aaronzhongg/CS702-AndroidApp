@@ -1,11 +1,14 @@
-package com.example.aaron.cashme;
+package com.example.aaron.cashme.Services;
 
 import android.app.Service;
 import android.content.Intent;
 import android.os.Binder;
 import android.os.IBinder;
 
+import com.example.aaron.cashme.Common.DBHelper;
+
 /**
+ * This service is used to calculate net income by calling the db
  * Created by Aaron on 26/04/17.
  */
 
@@ -15,7 +18,7 @@ public class LocalService extends Service {
     DBHelper mydb = new DBHelper(LocalService.this);
 
     public class LocalBinder extends Binder {
-        LocalService getService() {
+        public LocalService getService() {
             return LocalService.this;
         }
     }

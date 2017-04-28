@@ -2,38 +2,48 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:weightSum="1">
+    android:weightSum="1"
+    android:background="@color/colorSecondary">
 
     <TextView xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/expenseLabel"
-        android:layout_width="150dp"
-        android:layout_height="30dp"
+        android:layout_width="140dp"
+        android:layout_height="40dp"
         android:text="expenseType"
-        android:textSize="16sp"
+        android:textSize="20dp"
         android:textStyle="bold"
+        android:gravity="center_vertical"
+        android:textColor="@color/lightTextColour"
         android:layout_alignParentTop="true"
-        android:layout_toLeftOf="@+id/expenseListAmount"
-        android:layout_toStartOf="@+id/expenseListAmount"></TextView>
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="13dp"></TextView>
 
     <TextView
         android:id="@+id/expenseListAmount"
         android:layout_width="75dp"
-        android:layout_height="30dp"
+        android:layout_height="40dp"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
         android:text="Amount"
         android:textAlignment="textStart"
-        android:textStyle="bold"></TextView>
+        android:textStyle="bold"
+        android:textSize="20dp"
+        android:gravity="center_vertical"
+        android:textColor="@color/lightTextColour"
+        android:layout_toLeftOf="@+id/expenseTerm"
+        android:layout_toRightOf="@+id/expenseLabel"></TextView>
 
     <TextView
         android:id="@+id/expenseTerm"
         android:layout_width="120dp"
-        android:layout_height="30dp"
+        android:layout_height="40dp"
         android:text="Term"
         android:textAlignment="textStart"
-        android:textSize="16dp"
+        android:textSize="20dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:textStyle="bold"
+        android:gravity="center_vertical"
+        android:textColor="@color/lightTextColour"/>
 
 </RelativeLayout>

@@ -1,4 +1,4 @@
-package com.example.aaron.cashme;
+package com.example.aaron.cashme.Common;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -7,17 +7,20 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
+import com.example.aaron.cashme.Models.IncomeExpenses;
+import com.example.aaron.cashme.R;
 
 import java.util.List;
 
 /**
+ * This is a list adapter to manage the income list
+ *
  * Created by Aaron on 17/04/17.
  */
 
 public class ListAdapter extends BaseAdapter {
     Context context;
-    List<IncomeExpenses> data;
+    public List<IncomeExpenses> data;
     private static LayoutInflater inflater = null;
 
     public ListAdapter(Context context, List<IncomeExpenses> data) {

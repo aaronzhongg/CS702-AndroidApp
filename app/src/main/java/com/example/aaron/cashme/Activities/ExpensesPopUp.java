@@ -1,4 +1,4 @@
-package com.example.aaron.cashme;
+package com.example.aaron.cashme.Activities;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -8,14 +8,19 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioGroup;
 
+import com.example.aaron.cashme.Common.DBHelper;
+import com.example.aaron.cashme.R;
+
 /**
+ * This is a popup to add new expenses
+ *
  * Created by Aaron on 21/04/17.
  */
 
 public class ExpensesPopUp extends Activity {
 
+    //declare variables
     DBHelper mydb;
-
     Button closeBtn;
     Button saveBtn;
     RadioGroup radioGroup;

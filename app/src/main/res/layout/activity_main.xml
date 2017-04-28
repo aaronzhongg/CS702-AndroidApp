@@ -6,7 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.example.aaron.cashme.MainActivity">
+    android:background="@drawable/gradient"
+    tools:context="com.example.aaron.cashme.Activities.MainActivity">
 
     <FrameLayout
         android:id="@+id/main_content"
@@ -21,6 +22,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         android:background="?android:attr/windowBackground"
-        app:menu="@menu/navigation" />
+        app:menu="@menu/navigation"
+        />
 
 </LinearLayout>
